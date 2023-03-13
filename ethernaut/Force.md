@@ -1,6 +1,6 @@
 # Force
 
-## SourceCode
+## 源码
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
@@ -16,13 +16,13 @@ contract Force {/*
 */}
 ```
 
-## Requirements
+## 要求
 使合约的余额大于0
 
-## Analysis
+## 分析
 可以看到合约并没有实现`receive`或`fallback`,并不能收款.但是还有另一种情况:合约调用[selfdestruct](https://github.com/AmazingAng/WTF-Solidity/blob/main/26_DeleteContract/readme.md)时指定的地址会强制接收合约内的余额.
 
-## Attack Steps
+## 攻击步骤
 1. 实现一个带有`selfdestruct`方法合约并指定销毁后接收地址.
 2. 向合约转入ETH
 3. 调用自毁函数
